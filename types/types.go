@@ -2,7 +2,12 @@ package types
 
 import "time"
 
+// here func that interacte with the db
 type TodoStore interface {
+	GetTodos()
+	GetTodoByID()
+	UpdateTodo()
+	DeleteTodo()
 }
 
 type Todo struct {
