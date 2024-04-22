@@ -6,16 +6,19 @@ import (
 
 	"github.com/FrancoRutigliano/Mongo-go/middleware"
 	"github.com/FrancoRutigliano/Mongo-go/services/todos"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
 type APIServer struct {
-	addr string
+	addr   string
+	client *mongo.Client
 }
 
 // Constructor
-func NewApiServer(addr string) *APIServer {
+func NewApiServer(addr string, client *mongo.Client) *APIServer {
 	return &APIServer{
-		addr: addr,
+		addr:   addr,
+		client: client,
 	}
 }
 
@@ -31,6 +34,7 @@ func (s *APIServer) Run() error {
 
 	// todos
 	todos.RegisterRoutes(router)
+	todos.New(s.client)
 
 	log.Println("Listening on port: ", s.addr)
 

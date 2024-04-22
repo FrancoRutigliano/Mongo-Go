@@ -17,3 +17,7 @@ type Todo struct {
 	CreatedAt time.Time `json:"created_at,omitempty" bson:"created_at,omitempty"`
 	UpdateAt  time.Time `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
 }
+
+type Models struct {
+	Todo Todo
+}
