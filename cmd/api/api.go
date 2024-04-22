@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/FrancoRutigliano/Mongo-go/middleware"
+	"github.com/FrancoRutigliano/Mongo-go/services/todos"
 )
 
 type APIServer struct {
@@ -29,9 +30,7 @@ func (s *APIServer) Run() error {
 	middlewareChain := middleware.MiddlewareChain()
 
 	// todos
-	router.HandleFunc("GET /Todos", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("All todos"))
-	})
+	todos.RegisterRoutes(router)
 
 	log.Println("Listening on port: ", s.addr)
 
