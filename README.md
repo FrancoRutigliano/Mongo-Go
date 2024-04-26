@@ -16,4 +16,7 @@ Simple crud(for now) to manage todos
 - Create an entity users
 - Crud and routing for users
 - Folder utils.go with utils functions
+- Reestructure the project (layout oficial projects for Go)
+- Apply JWT
+- Protecting Routes (Middleware)
 
