@@ -34,7 +34,6 @@ func (s *APIServer) Run() error {
 
 	// todos
 	todos.RegisterRoutes(router)
-	todos.New(s.client)
 
 	log.Println("Listening on port: ", s.addr)
 
