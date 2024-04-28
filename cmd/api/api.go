@@ -33,7 +33,9 @@ func (s *APIServer) Run() error {
 	middlewareChain := middleware.MiddlewareChain()
 
 	// todos
-	todos.RegisterRoutes(router)
+	todosStore := todos.NewStore(s.client)
+	todosHandler := todos.NewHandler(todosStore)
+	todosHandler.RegisterRoutes(router)
 
 	log.Println("Listening on port: ", s.addr)
 
